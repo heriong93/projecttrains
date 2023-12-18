@@ -26,6 +26,15 @@ public class Train {
 		this.trainTime = trainTime;
 		this.trainSeat = trainSeat;
 	}
+	
+	
+	public Train (String trainNum,String trainName,String userId,String trainTime) {
+		this.trainNum = trainNum;
+		this.trainName = trainName;
+		Users.getUserId = userId;
+		this.trainTime = trainTime;
+	}
+	
 	//메소드 정의 
 	void showInfo() {
 		System.out.println("기차번호>>"+trainNum +"\n"+"기차명>>"+ trainName +"\n"+ "출발시간>>"+trainTime +"\n"+"예약가능좌석>>"+ trainSeat);

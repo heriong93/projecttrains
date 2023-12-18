@@ -40,10 +40,8 @@ public class TrainApp {
 				}
 				break;
 			case 3: // 기차표 구매
-				System.out.println("1)회원가입 2)구매");
-				int inmenu = Integer.parseInt(scn.nextLine());
-				switch (inmenu) {
-				case 1:
+				System.out.println("구매를 위한 정보를 입력해주세요");
+				
 					System.out.println("아이디>>");
 					String id = scn.nextLine();
 					System.out.println("비밀번호>>");
@@ -52,28 +50,24 @@ public class TrainApp {
 					String name = scn.nextLine();
 					System.out.println("전화번호>>");
 					String phone = scn.nextLine();
-					System.out.println("이메일주소>>");
-					String mail = scn.nextLine();
-					Users users = new Users(id, pw, name, phone, mail);
+					System.out.println("탑승할 기차 번호>>");
+					String trnum = scn.nextLine();
+					Users users = new Users(id, pw, name, phone, trnum);
 					if (dao.addUsers(users)) {
-						System.out.println("가입 완료");
+						System.out.println("예약 완료");
 					} else {
-						System.out.println("가입 중 오류");
+						System.out.println("예약 중 오류");
 					}
 					break;
-				case 2:
-					System.out.println("예약할 기차 번호>>");
-					String trnum = scn.nextLine();
-					System.out.println("예약자 아이디>>");
-					String bookid = scn.nextLine();
-					
-
-					break;
-
-				}// end of inner switch
-				break;
 			case 4: //예약조회 
-				
+				System.out.println("아이디 입력>>");
+				String idcheck = scn.nextLine();
+				Users us = dao.getReservationList(idcheck);
+				if (us != null) {
+					us.showInfo();
+				} else {
+					System.out.println("조회된 예약이 없습니다");
+				}
 				break;
 			case 5: //예약취소 
 				System.out.println("예약자 아이디>>");

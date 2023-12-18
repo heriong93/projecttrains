@@ -6,16 +6,16 @@ public class Users extends Train{
 	private String userPw;
 	private String userName;
 	private String userPhone;
-	private String userMail;
+	private String trainsToTake;
 	
 	Users(){}
 	
-	public Users(String userId,String userPw,String userName,String userPhone,String userMail) {
+	public Users(String userId,String userPw,String userName,String userPhone,String trainsToTake) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
 		this.userPhone = userPhone;
-		this.userMail = userMail;
+		this.trainsToTake = trainsToTake;
 	}
 	public Users(String trainNum, String trainName, String userName, String trainTime) {
 		super.trainNum = trainNum;
@@ -44,8 +44,8 @@ public class Users extends Train{
 		return userPhone;
 	}
  
-	public String getUserMail() {
-		return userMail;
+	public String getTrainsToTake() {
+		return trainsToTake;
 	}
 
 	public void setUserId(String userId) {
@@ -64,8 +64,8 @@ public class Users extends Train{
 		this.userPhone = userPhone;
 	}
 
-	public void setUserMail(String userMail) {
-		this.userMail = userMail;
+	public void setTrainsToTake(String trainsToTake) {
+		this.trainsToTake = trainsToTake;
 	}
 
 	
