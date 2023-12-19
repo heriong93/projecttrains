@@ -7,7 +7,7 @@ public class Train {
 	private String trainDepart;
 	private String trainDesti;
 	protected String trainTime;
-	private int trainSeat;
+	protected int trainSeat;
 	
 	//생성자
 	Train(){}
@@ -27,13 +27,6 @@ public class Train {
 		this.trainSeat = trainSeat;
 	}
 	
-	
-	public Train (String trainNum,String trainName,String userId,String trainTime) {
-		this.trainNum = trainNum;
-		this.trainName = trainName;
-		Users.getUserId = userId;
-		this.trainTime = trainTime;
-	}
 	
 	//메소드 정의 
 	void showInfo() {

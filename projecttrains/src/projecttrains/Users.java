@@ -23,6 +23,16 @@ public class Users extends Train{
 		this.userName = userName;
 		super.trainTime = trainTime;	
 	}
+	public Users(String userId,String userPw,String trainsToTake) {
+		this.userId = userId;
+		this.userPw = userPw;
+		this.trainsToTake = trainsToTake;
+	}
+	
+	public Users(String userId,String userPw) {
+		this.userId = userId;
+		this.userPw = userPw;
+	}
 	//메소드 정의 
 	void showInfo() {
 		System.out.println("기차번호>>"+trainNum+"기차이름>>"+trainName+"승객이름>>"+userName+"출발시간>>"+trainTime);
