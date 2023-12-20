@@ -8,7 +8,7 @@ public class Train {
 	private String trainDesti;
 	protected String trainTime;
 	protected int trainSeat;
-	
+	 
 	//생성자
 	Train(){}
 	
@@ -30,7 +30,8 @@ public class Train {
 	
 	//메소드 정의 
 	void showInfo() {
-		System.out.println("기차번호>>"+trainNum +"\n"+"기차명>>"+ trainName +"\n"+ "출발시간>>"+trainTime +"\n"+"예약가능좌석>>"+ trainSeat);
+		System.out.println(" "+trainNum +"\t"+"\t"+ trainName +"\t"+"\t"+ trainTime +"\t"+"\t"+ trainSeat);
+		System.out.println(" ");
 	}
 	void showLeftSeat() {
 		System.out.println("예약 가능한 좌석 수>> "+trainSeat);

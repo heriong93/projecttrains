@@ -7,7 +7,7 @@ public class Users extends Train{
 	private String userName;
 	private String userPhone;
 	private String trainsToTake;
-	
+	 
 	Users(){}
 	
 	public Users(String userId,String userPw,String userName,String userPhone,String trainsToTake) {
@@ -17,12 +17,15 @@ public class Users extends Train{
 		this.userPhone = userPhone;
 		this.trainsToTake = trainsToTake;
 	}
-	public Users(String trainNum, String trainName, String userName, String trainTime) {
-		super.trainNum = trainNum;
-		super.trainName = trainName;
+	
+	public Users(String userId,String userPw,String userName,String userPhone) {
+		this.userId = userId;
+		this.userPw = userPw;
 		this.userName = userName;
-		super.trainTime = trainTime;	
+		this.userPhone = userPhone;
+	
 	}
+	
 	public Users(String userId,String userPw,String trainsToTake) {
 		this.userId = userId;
 		this.userPw = userPw;

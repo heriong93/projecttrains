@@ -12,9 +12,9 @@ public class UserDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
-
+ 
 	Connection getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@192.168.0.19:1521:xe";
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
@@ -65,16 +65,16 @@ public class UserDAO {
 
 	//
 	// 로그인
-	boolean loginUserId(String userId, String userPw) {
+	boolean loginUserId(String userName, String userId) {
 		getConn();
 		String sql = "SELECT * " 
 					+ "FROM USERS " 
-					+ "WHERE USER_ID = ? " 
-					+ "AND USER_PW = ? ";
+					+ "WHERE USER_NAME = ? " 
+					+ "AND USER_ID = ? ";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, userId);
-			psmt.setString(2, userPw);
+			psmt.setString(1, userName);
+			psmt.setString(2, userId);
 
 			rs = psmt.executeQuery();
 			if (rs.next()) {

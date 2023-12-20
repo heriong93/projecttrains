@@ -11,9 +11,9 @@ public class TrainDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
-
+ 
 	Connection getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@192.168.0.19:1521:xe";
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
@@ -43,8 +43,11 @@ public class TrainDAO {
 
 	ArrayList<Train> getTrainList(String trainDepart, String trainDesti) {
 		getConn();
-		String sql = "SELECT tr_num, tr_name,tr_time, tr_seat " + "FROM trains " + "WHERE tr_depart =?"
-				+ "AND tr_destin = ?";
+		String sql = "SELECT tr_num, tr_name,tr_time, tr_seat  "
+				+ "FROM trains  "
+				+ "WHERE tr_depart =? "
+				+ "AND tr_destin = ? "
+				+ "ORDER BY TR_TIME ";
 		ArrayList<Train> trains = new ArrayList<Train>();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -66,6 +69,52 @@ public class TrainDAO {
 		}
 		return trains;
 	}// end of getTrainList
+	
+	
+	//기차 노선 확인  
+	boolean checkTrainDest(String trdp, String trar ) {
+		getConn();
+		String sql = "SELECT * "
+				+ "FROM TRAINS "
+				+ "WHERE TR_DEPART = ?"
+				+ "AND TR_DESTIN = ?"
+				+ "ORDER BY TR_TIME";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, trdp);
+			psmt.setString(2, trar);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return false;
+	}
+	// 존재하지 않는 기차 예약 방지 
+		boolean checkTrainNum(String trnum) {
+			getConn();
+			String sql = "SELECT * " 
+						+ "FROM trains " 
+						+ "WHERE tr_num = ?";
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, trnum);
+
+				int r = psmt.executeUpdate();
+				if (r == 0) {
+					return true;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconn();
+			}
+			return false;
+		}
 
 	// 잔여좌석 보기
 	Train getTrainSeat(String trainNum) {
